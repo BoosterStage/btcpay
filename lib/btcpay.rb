@@ -2,7 +2,7 @@
 
 require 'btcpay/version'
 
-module Btcpay
+module BtcPay
   class Error < StandardError; end
   # Your code goes here...
 end

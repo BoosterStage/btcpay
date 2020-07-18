@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Btcpay do
+RSpec.describe BtcPay do
   it 'has a version number' do
-    expect(Btcpay::VERSION).not_to be nil
-  end
-
-  it 'does something useful' do
-    expect(false).to eq(true)
+    expect(BtcPay::VERSION).to eq('0.1.0')
   end
 end

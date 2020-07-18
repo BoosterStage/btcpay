@@ -24,6 +24,16 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+### BtcPay Docker Compose
+
+To get up and running locally quickly, a [BTCPayServer]((https://docs.btcpayserver.org/)) docker-compose file has been added to test local API interactions. To get up and running:
+
+1. `$ docker-compose -f docker-compose.btcpay.yml up`
+1. `$ open http://localhost:49392`
+  - Note: [`regtest`](https://bisq.network/blog/how-to-set-up-bitcoin-regtest/) environment default to allow for block/coin creation for test purpose
+  - `testnet` environment should be used for integration/staging testing prior to production promotion.
+  - `mainnet` is the **real** network.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

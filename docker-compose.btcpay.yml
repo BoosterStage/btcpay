@@ -1,0 +1,93 @@
+version: "3"
+
+services:
+  # Bitcoin daemon for blockchain transaction data
+  bitcoind:
+    container_name: bitcoind
+    restart: unless-stopped
+    image: btcpayserver/bitcoin:0.19.0.1
+    environment:
+      BITCOIN_NETWORK: regtest
+      BITCOIN_EXTRA_ARGS: |
+        debug=1
+        regtest=1
+        server=1
+        rpcport=43782
+        rpcbind=0.0.0.0:43782
+        port=39388
+        whitelist=0.0.0.0/0
+        rpcuser=rpcuser
+        rpcpassword=rpcpassword
+    expose:
+      - "43782" # rpc port
+      - "39388" # bitcoin node can communicate
+    ports:
+      - "43782:43782"
+      - "39388:39388"
+    volumes:
+      - "bitcoind_data:/data"
+
+  # Blockchain explorer
+  nbxplorer:
+    container_name: nbxplorer
+    restart: unless-stopped
+    image: nicolasdorier/nbxplorer:2.1.34
+    ports:
+      - "32838:32838"
+    environment:
+      NBXPLORER_NETWORK: regtest
+      NBXPLORER_BIND: 0.0.0.0:32838
+      NBXPLORER_SIGNALFILEDIR: /datadir
+      NBXPLORER_NOAUTH: 1
+      NBXPLORER_CHAINS: btc
+      NBXPLORER_BTCRPCURL: http://bitcoind:43782/
+      NBXPLORER_BTCRPCUSER: rpcuser
+      NBXPLORER_BTCRPCPASSWORD: rpcpassword
+      NBXPLORER_BTCNODEENDPOINT: bitcoind:39388
+    volumes:
+      - "bitcoind_data:/root/.bitcoin"
+      - "nbxplorer_data:/datadir"
+    links:
+      - bitcoind
+
+  btcpay:
+    container_name: btcpay
+    restart: unless-stopped
+    image: btcpayserver/btcpayserver:1.0.5.2
+    ports:
+      - "49392:49392"
+    environment:
+      BTCPAY_BIND: 0.0.0.0:49392
+      BTCPAY_POSTGRES: User ID=user;Password=password;Host=btcpay_db;Port=5432;Database=btcpay_regtest
+      BTCPAY_NETWORK: regtest
+      BTCPAY_CHAINS: btc
+      BTCPAY_ROOTPATH: /
+      BTCPAY_BTCEXPLORERURL: http://nbxplorer:32838/
+      BTCPAY_DEBUGLOG: btcpay.log
+    volumes:
+     - "btcpay_data:/datadir"
+     - "nbxplorer_data:/root/.nbxplorer"
+    links:
+      - btcpay_db
+      - bitcoind
+      - nbxplorer
+
+  btcpay_db:
+    container_name: btcpay_db
+    restart: unless-stopped
+    image: postgres:11.5-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - /usr/local/var/postgres/data:/var/lib/postgresql/data
+      - /usr/local/var/postgres/docker/multi-db-entrypoint:/docker-entrypoint-initdb.d
+
+volumes:
+  bitcoind_data:
+  nbxplorer_data:
+  btcpay_data:
+
+networks: {}

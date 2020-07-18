@@ -4,7 +4,7 @@ require_relative 'lib/btcpay/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'btcpay'
-  spec.version       = Btcpay::VERSION
+  spec.version       = BtcPay::VERSION
   spec.authors       = ['snogrammer']
   spec.email         = ['btcpay-gem@snogram.com']
 
@@ -34,4 +34,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry', '> 0'
   spec.add_development_dependency 'rubocop', '> 0'
   spec.add_development_dependency 'simplecov',  '> 0'
+  spec.add_development_dependency 'vcr', '~> 6.0'
+  spec.add_development_dependency 'webmock', '~> 3.8'
 end
