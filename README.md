@@ -22,7 +22,58 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+#### Required Params
+
+##### Auth Token
+
+At least one of the following auth tokens are required. Auth tokens can be created via the following:
+
+1. `auth_token`
+  - Scoped Api Tokens can be created via `/Manage/APIKeys`
+  - `BTCPAY_AUTH_TOKEN` environment variable can also be used
+1. `basic_auth_token`
+  - Legacy Api Key can be created per store via `/stores/{store-id}/Tokens`
+  - `BTCPAY_BASIC_AUTH_TOKEN` environment variable can also be used
+
+##### Base Url
+
+A `base_url` is required to interact with the server.
+  - `BTCPAY_BASE_URL` environment variable can also be used
+
+```ruby
+client = BtcPay.new(auth_token: 'foobar', base_url: 'http://localhost:49392')
+```
+
+### Response
+
+A response consists of the following accessible attributes:
+
+1. `#body` - rubified response body
+1. `#code` - response status code
+1. `#headers` - response headers
+1. `#raw` - unaltered response body
+1. `#status` - `:success`/`:failure`
+
+### Request object types
+
+All endpoints are accessed via namespaced Api resource. Example: `client.users.create({ email: 'foo@bar.com', password: 'password', isAdministrator: false })`
+
+#### Users:
+
+1. `#me(**opts)`
+  - alias: `get`, `show`
+1. `#create(payload, **opts)`
+
+
+### Environment Variables
+
+`btcpay` can be initialized with either arguments or ENV:
+
+| Variable                  |  Description            | Default  |
+| --------------------------|:------------------------|:--------:|
+| `BTCPAY_AUTH_TOKEN`       | BtcPay Auth Token       |    -     |
+| `BTCPAY_BASIC_AUTH_TOKEN` | BtcPay Basic Auth Token |    -     |
+| `BTCPAY_BASE_URL`         | BtcPay Base Url         |    -     |
 
 ### BtcPay Docker Compose
 
@@ -42,7 +93,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/btcpay.
+Bug reports and pull requests are welcome on Gitlab at https://gitlab.com/snogrammer/btcpay.
 
 
 ## License

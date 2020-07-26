@@ -28,9 +28,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'flexirest', '~> 1.9', '< 2.0'
+  spec.add_dependency 'activesupport', '> 5'
+  spec.add_dependency 'multi_json', '~> 1.15'
+  spec.add_dependency 'rest-client', '~> 2.1'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
+  spec.add_development_dependency 'factory_bot', '~> 6.1'
   spec.add_development_dependency 'pry', '> 0'
   spec.add_development_dependency 'rubocop', '> 0'
   spec.add_development_dependency 'simplecov',  '> 0'
