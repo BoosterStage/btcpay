@@ -2,16 +2,13 @@
 
 require 'spec_helper'
 
-RSpec.describe CoinMarketPro::Client::Result do # rubocop:disable Metrics/BlockLength
+RSpec.describe BtcPay::Client::Result do
   let(:response) { double('response') }
-  let(:code) { double('code') }
+  let(:code) { 200 }
   let(:body) do
     {
       data: {
         test: 'test'
-      },
-      status: {
-        code: 0
       }
     }
   end
@@ -31,10 +28,10 @@ RSpec.describe CoinMarketPro::Client::Result do # rubocop:disable Metrics/BlockL
     it 'captures response and sets status to success' do
       result = described_class.success(response)
 
-      expect(result).to be_a(CoinMarketPro::Client::Result)
-      expect(result.success?).to eq(true)
-      expect(result.failure?).to eq(false)
-      expect(result.body).to eq(body[:data])
+      expect(result).to be_a(BtcPay::Client::Result)
+      expect(result.success?).to be_truthy
+      expect(result.failure?).to be_falsey
+      expect(result.body).to eq(body.with_indifferent_access)
       expect(result.code).to eq(code)
     end
   end
@@ -43,10 +40,10 @@ RSpec.describe CoinMarketPro::Client::Result do # rubocop:disable Metrics/BlockL
     it 'captures response and sets status to failed' do
       result = described_class.failed(response)
 
-      expect(result).to be_a(CoinMarketPro::Client::Result)
-      expect(result.success?).to eq(false)
-      expect(result.failure?).to eq(true)
-      expect(result.body).to eq(body[:data])
+      expect(result).to be_a(BtcPay::Client::Result)
+      expect(result.success?).to be_falsey
+      expect(result.failure?).to be_truthy
+      expect(result.body).to eq(body.with_indifferent_access)
       expect(result.code).to eq(code)
     end
   end
@@ -55,8 +52,8 @@ RSpec.describe CoinMarketPro::Client::Result do # rubocop:disable Metrics/BlockL
     let(:result) { described_class.success(response) }
 
     it 'returns true if success' do
-      expect(result.success?).to eq(true)
-      expect(result.failure?).to eq(false)
+      expect(result.success?).to be_truthy
+      expect(result.failure?).to be_falsey
     end
   end
 
@@ -64,27 +61,15 @@ RSpec.describe CoinMarketPro::Client::Result do # rubocop:disable Metrics/BlockL
     let(:result) { described_class.failed(response) }
 
     it 'returns true if failed' do
-      expect(result.failure?).to eq(true)
-      expect(result.success?).to eq(false)
+      expect(result.failure?).to be_truthy
+      expect(result.success?).to be_falsey
     end
   end
 
   describe '#to_h' do
     it 'returns a hash of values' do
       result = described_class.success(response)
-      expect(result.to_h).to eq(code: code, headers: headers, body: body[:data], status: body[:status].merge(result: :success))
-    end
-  end
-
-  describe '#to_hash' do
-    it 'returns a hash of values' do
-      result = described_class.success(response)
-      expect(result.to_hash).to eq(code: code, headers: headers, body: body[:data], status: body[:status].merge(result: :success))
-    end
-
-    it 'can be called implicitly' do
-      result = described_class.success(response)
-      expect(result[:code]).to eq code
+      expect(result.to_h).to eq(code: code, headers: headers, body: body.with_indifferent_access, status: :success)
     end
   end
 end
