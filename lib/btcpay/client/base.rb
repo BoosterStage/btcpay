@@ -19,6 +19,8 @@ module BtcPay
       API_PATH = '/api/v1'
       DEFAULT_TIMEOUT = 10
 
+      attr_reader :logger
+
       # @param config [BtcPay::Client::Config]
       # @param logger [Logger]
       # @param timeout [Integer] Defaults to DEFAULT_TIMEOUT
@@ -51,12 +53,12 @@ module BtcPay
       end
 
       def users
-        @users ||= Api::Users.new(client: self, logger: logger)
+        @users ||= Api::Users.new(client: self)
       end
 
       private
 
-      attr_reader :config, :logger
+      attr_reader :config
 
       # @return [Hash]
       def default_headers

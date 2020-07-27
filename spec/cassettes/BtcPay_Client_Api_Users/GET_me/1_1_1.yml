@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:49392/api/v1/users/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - btcpay_ruby/0.1.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - deflate, gzip
+      Authorization:
+      - token 9133b8ef3ae9a4b7f2d9a6efef1d5cf738067c68
+      Host:
+      - localhost:49392
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Jul 2020 00:04:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Kestrel
+      Content-Length:
+      - '128'
+      Referrer-Policy:
+      - same-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":"4d164e21-c0a1-44c4-8dc9-3d15be78b174","email":"admin@admin.com","emailConfirmed":false,"requiresEmailConfirmation":false}'
+  recorded_at: Mon, 27 Jul 2020 00:04:15 GMT
+recorded_with: VCR 6.0.0

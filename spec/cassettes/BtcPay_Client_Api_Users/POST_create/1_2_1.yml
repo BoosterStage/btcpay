@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:49392/api/v1/users
+    body:
+      encoding: UTF-8
+      string: '{"email":"btcpaygem-8540b3f4aec685de9a61486ff24e3455@spec.com","password":"password","isAdministrator":false}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - btcpay_ruby/0.1.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - deflate, gzip
+      Authorization:
+      - token 9133b8ef3ae9a4b7f2d9a6efef1d5cf738067c68
+      Content-Length:
+      - '109'
+      Host:
+      - localhost:49392
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Mon, 27 Jul 2020 01:00:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Kestrel
+      Content-Length:
+      - '813'
+      Location:
+      - http://localhost:49392/Users
+      Referrer-Policy:
+      - same-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"notifications":null,"userStores":null,"requiresEmailConfirmation":false,"storedFiles":null,"u2FDevices":null,"apiKeys":null,"id":"7e8ff7f1-df17-4d1a-a84c-4aac98cfd272","userName":"btcpaygem-8540b3f4aec685de9a61486ff24e3455@spec.com","normalizedUserName":"BTCPAYGEM-8540B3F4AEC685DE9A61486FF24E3455@SPEC.COM","email":"btcpaygem-8540b3f4aec685de9a61486ff24e3455@spec.com","normalizedEmail":"BTCPAYGEM-8540B3F4AEC685DE9A61486FF24E3455@SPEC.COM","emailConfirmed":false,"passwordHash":"AQAAAAEAACcQAAAAEEWoj7yJjEJRhSPdy93+LD9aoPYH2FAZKRp+ubsfcBK0MYWAk2SASMWGKTcyhJyJzw==","securityStamp":"AXSOMQHRCK7LW675TNUYOP2NSAVDJ6XX","concurrencyStamp":"dc445406-ea20-417b-abb6-920b6d324846","phoneNumber":null,"phoneNumberConfirmed":false,"twoFactorEnabled":false,"lockoutEnd":null,"lockoutEnabled":true,"accessFailedCount":0}'
+  recorded_at: Mon, 27 Jul 2020 01:00:30 GMT
+recorded_with: VCR 6.0.0

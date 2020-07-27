@@ -15,7 +15,7 @@ FactoryBot.define do
 
     trait :basic_auth_token do
       auth_token { nil }
-      basic_auth_token { 'TODO' }
+      basic_auth_token { 'G7Uvk0VV7BWQQI7LrihMnDGhEnR7kopW0PRoli77Lyo' }
     end
   end
 end

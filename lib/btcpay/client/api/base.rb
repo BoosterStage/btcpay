@@ -4,9 +4,9 @@ module BtcPay
   module Client
     module Api
       class Base
-        def initialize(client:, logger:)
+        def initialize(client:)
           @client = client
-          @logger = logger
+          @logger = @client.logger
         end
 
         protected
