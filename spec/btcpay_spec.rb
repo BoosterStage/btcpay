@@ -6,9 +6,6 @@ RSpec.describe BtcPay do
   end
 
   describe '.new' do
-    it do
-      expect(described_class.new(auth_token: '123', base_url: 'http://localhost'))
-        .to be_a(BtcPay::Client::Base)
-    end
+    it { expect(described_class.new(auth_token: '123', base_url: 'http://localhost')).to be_a(BtcPay::Client::Base) }
   end
 end
