@@ -9,12 +9,14 @@ FactoryBot.define do
     initialize_with { new(**attributes) }
 
     trait :auth_token do
+      # this is a local instance of regtest so YOLO... replace as needed
       auth_token { '9133b8ef3ae9a4b7f2d9a6efef1d5cf738067c68' }
       basic_auth_token { nil }
     end
 
     trait :basic_auth_token do
       auth_token { nil }
+      # this is a local instance of regtest so YOLO... replace as needed
       basic_auth_token { 'G7Uvk0VV7BWQQI7LrihMnDGhEnR7kopW0PRoli77Lyo' }
     end
   end

@@ -6,10 +6,6 @@ FactoryBot.define do
     password { 'password' }
     isAdministrator { false }
 
-    initialize_with do
-      user = {}
-      attributes.each { |k, v| user[k] = v }
-      user
-    end
+    initialize_with { attributes }
   end
 end

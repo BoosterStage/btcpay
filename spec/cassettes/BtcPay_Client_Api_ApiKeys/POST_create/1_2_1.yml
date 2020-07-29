@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:49392/api/v1/api-keys
+    body:
+      encoding: UTF-8
+      string: '{"label":"btcpaygem-spec-062490834fadd94abd09bcef2da08903","permissions":["unrestricted"]}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - btcpay_ruby/0.1.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - deflate, gzip
+      Authorization:
+      - token 9133b8ef3ae9a4b7f2d9a6efef1d5cf738067c68
+      Content-Length:
+      - '90'
+      Host:
+      - localhost:49392
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 29 Jul 2020 02:23:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Kestrel
+      Content-Length:
+      - '142'
+      Referrer-Policy:
+      - same-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"apiKey":"58ba8185aa87647d4b18b4d1f2503c6420b97552","label":"btcpaygem-spec-062490834fadd94abd09bcef2da08903","permissions":["unrestricted"]}'
+  recorded_at: Wed, 29 Jul 2020 02:23:10 GMT
+recorded_with: VCR 6.0.0

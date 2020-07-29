@@ -28,4 +28,5 @@ module BtcPay
   end
 end
 
+require_relative './api_keys'
 require_relative './users'
