@@ -52,6 +52,20 @@ module BtcPay
         request(uri, method: :post, payload: data, options: options, headers: headers)
       end
 
+      # DELETE request
+      #
+      # @param uri [String]
+      # @param options [Hash]
+      # @param headers [Hash]
+      # @return [Result]
+      def delete(uri, options: {}, headers: {})
+        request(uri, method: :delete, options: options, headers: headers)
+      end
+
+      def api_keys
+        @api_keys ||= Api::ApiKeys.new(client: self)
+      end
+
       def users
         @users ||= Api::Users.new(client: self)
       end
@@ -83,7 +97,7 @@ module BtcPay
         params = {
           method: method,
           url: url.to_s,
-          payload: payload,
+          payload: payload.presence,
           headers: default_headers.merge(headers),
           open_timeout: open_timeout,
           timeout: timeout
@@ -110,7 +124,7 @@ module BtcPay
       def handle_error(error)
         logger.error(error: 'Request Exception', code: error.response.code, message: error.message)
 
-        Result.failed(response)
+        Result.failed(error.response)
       end
 
       # @return [Integer]

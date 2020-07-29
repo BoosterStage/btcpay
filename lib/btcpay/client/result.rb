@@ -22,12 +22,12 @@ module BtcPay
       attr_reader :body, :code, :headers, :raw, :status
 
       def initialize(status, response)
-        @raw = raw_parse(response.body)
-
-        @body = rubify_body
         @code = response.code
         @headers = response.headers # e.g. "Content-Type" will become :content_type.
         @status = status
+
+        @raw = raw_parse(response.body)
+        @body = rubify_body
       end
 
       def success?
@@ -60,13 +60,27 @@ module BtcPay
       end
 
       # @param body [JSON] Raw JSON body
-      def raw_parse(body)
-        MultiJson.load(body).with_indifferent_access
+      def raw_parse(response)
+        return if response.blank?
+
+        body = MultiJson.load(response)
+
+        case body
+        when Array
+          key = success? ? :data : :errors
+          {
+            key => body.map(&:with_indifferent_access)
+          }
+        else
+          body.with_indifferent_access
+        end
       rescue StandardError => e
         raise ResponseBodyParseError.new(error: 'JSON parse error', message: e.message, body: body)
       end
 
       def rubify_body
+        return if raw.blank?
+
         raw.deep_transform_keys { |key| key.to_s.underscore }.with_indifferent_access
       end
 
