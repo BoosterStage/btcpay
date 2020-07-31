@@ -1,0 +1,209 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:49392/api-keys/authorize?applicationName=foobar&permissions%5B%5D=unrestricted&selectiveStores=false&strict=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - btcpay_ruby/0.1.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - deflate, gzip
+      Authorization:
+      - token 9133b8ef3ae9a4b7f2d9a6efef1d5cf738067c68
+      Host:
+      - localhost:49392
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Date:
+      - Fri, 31 Jul 2020 01:33:20 GMT
+      Server:
+      - Kestrel
+      Content-Length:
+      - '0'
+      Location:
+      - http://localhost:49392/Account/Login?ReturnUrl=%2Fapi-keys%2Fauthorize%3FapplicationName%3Dfoobar%26permissions%5B%5D%3Dunrestricted%26selectiveStores%3Dfalse%26strict%3Dtrue
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 31 Jul 2020 01:33:21 GMT
+- request:
+    method: get
+    uri: http://localhost:49392/Account/Login?ReturnUrl=/api-keys/authorize?applicationName=foobar%26permissions%5B%5D=unrestricted%26selectiveStores=false%26strict=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - btcpay_ruby/0.1.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - deflate, gzip
+      Authorization:
+      - token 9133b8ef3ae9a4b7f2d9a6efef1d5cf738067c68
+      Host:
+      - localhost:49392
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 31 Jul 2020 01:33:20 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Server:
+      - Kestrel
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Set-Cookie:
+      - ".AspNetCore.Antiforgery.Mk-_zf2J-V0=CfDJ8FnOlqdJk7hFrjBUfYfP5HlB-FeX7VFnMWWqaILnxw9EDiOr4BQizk1Dazj8E32rpIGmnRHyKWvXRHXZJyLtQwVVenV3V87sjdSEKffI4Kii7lRLYDczr4dmKkEYb8xdAqbMLv9ThC7kSSCLQmr-9FM;
+        path=/; samesite=strict; httponly"
+      - ".AspNetCore.Mvc.CookieTempDataProvider=; expires=Thu, 01 Jan 1970 00:00:00
+        GMT; path=/; samesite=lax; httponly"
+      - Identity.External=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; samesite=lax;
+        httponly
+      X-Frame-Options:
+      - DENY
+      Referrer-Policy:
+      - same-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    \n<meta charset=\"utf-8\"
+        />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"
+        />\n<meta name=\"description\" content=\"\">\n<meta name=\"author\" content=\"\">\n<title>Log
+        in</title>\n<link href=\"/main/bootstrap/bootstrap.css?v=Dkg9ITOesbl8jUO7t3zHEIvMa_mVhQjpYWTQBtdDeh4\"
+        rel=\"stylesheet\" />\n<link href=\"/main/bootstrap4-creativestart/creative.css?v=MOEzzK9YyA1W2wHpe5IeH6T859WAm0ufZjZNBT2FQF4\"
+        rel=\"stylesheet\" />\n<link href=\"/main/themes/default-dark.css?v=Jfqq3eXcV7ehSKHXMVV4JGcokr8F74GkdHowK55hAsw\"
+        rel=\"stylesheet\" />\n<link href=\"/bundles/main-bundle.min.css?v=ubBeJLlvfQ8Rw17qs0tDKGcAaLAX4bQiGooEo7gA5Hw\"
+        rel=\"stylesheet\" />\n\n<script src=\"/bundles/main-bundle.min.js?v=KbmYpknPoAEBawvH0HP710wPkyHmzKZirYvs4QmW9s0\"
+        type=\"text/javascript\"></script>\n\n\n\n    <link href=\"/main/fonts/Montserrat.css?v=EP3QtcFCZ4q4VE8vS4u8iT6ZDkPePw98EjfTxAUzSY4\"
+        rel=\"stylesheet\">\n    <style>\n        .content-wrapper {\n            padding:
+        70px 0;\n        }\n\n        @media screen and (min-width: 768px) {\n            .content-wrapper
+        {\n                padding: 100px 0;\n            }\n        }\n\n        .col-head
+        {\n            display: flex;\n            align-items: center;\n            flex-direction:
+        column;\n            justify-content: center;\n            text-align: center;\n
+        \       }\n\n        @media screen and (min-width: 768px) {\n            .col-head
+        {\n                text-align: left;\n                flex-direction: row;\n
+        \               justify-content: start;\n            }\n        }\n\n        .head-logo
+        {\n            height: 70px;\n            margin-bottom: 1rem;\n        }\n\n
+        \       @media screen and (min-width: 768px) {\n            .head-logo {\n
+        \               height: 100px;\n                margin-bottom: 0;\n                margin-right:
+        50px;\n            }\n        }\n\n        .lead-title {\n            font-family:
+        Montserrat;\n            font-style: normal;\n            font-weight: bold;\n
+        \           font-size: 24px;\n            line-height: 1.2;\n            /*
+        or 150% */\n            letter-spacing: 0.1em;\n        }\n\n        @media
+        screen and (min-width: 768px) {\n            .lead-title {\n                font-size:
+        40px;\n            }\n        }\n\n        .lead-login {\n            font-family:
+        Montserrat;\n            font-style: normal;\n            font-weight: normal;\n
+        \           font-size: 18px;\n            line-height: 33px;\n            /*
+        or 183% */\n            letter-spacing: 0.1em;\n        }\n\n        .lead-h
+        {\n            font-family: Montserrat;\n            font-style: normal;\n
+        \           margin-bottom: 30px;\n            font-weight: 600;\n            font-size:
+        14px;\n            line-height: 18px;\n            /* identical to box height,
+        or 129% */\n            letter-spacing: 0.1em;\n            text-transform:
+        uppercase;\n        }\n    </style>\n</head>\n<body>\n    <section class=\"content-wrapper\">\n
+        \       <!-- Dummy navbar-brand, hackish way to keep test AssertNoError passing
+        -->\n        <div class=\"navbar-brand\" style=\"display:none;\"></div>\n
+        \       <div class=\"container\">\n            <div class=\"row\">\n                <div
+        class=\"col-12 col-head\">\n                    <a href=\"/\"><img src=\"/img/btcpay-logo.svg?v=Fhv_MV_FZUb6EtYg7v7TsDa6MKTPBQwrsuNeg8jZduQ\"
+        alt=\"BTCPay Server\" class=\"head-logo\" /></a>\n                    <h1
+        class=\"lead-title text-uppercase\">Welcome to your BTCPay Server</h1>\n                </div>\n
+        \           </div>\n            <div class=\"row\">\n                <div
+        class=\"col-md-7 order-md-1 order-2\">\n                    <hr class=\"primary
+        ml-0\" style=\"margin:30px auto;\">\n                    <p class=\"lead-login\"
+        style=\"margin-bottom:69px;\">BTCPay Server is a self-hosted, open-source
+        cryptocurrency payment processor. It is secure, private, censorship-resistant
+        and free.</p>\n                    <h3 class=\"lead-h text-center\">\n    BTCPayServer
+        Supporters\n    <a href=\"https://foundation.btcpayserver.org/\" target=\"_blank\">\n
+        \       <span class=\"fa fa-question-circle-o\" title=\"More information...\"></span>\n
+        \   </a>\n</h3>\n<div class=\"row justify-content-center\">\n<div class=\"figure
+        p-3\">\n        <a href=\"https://kraken.com\" target=\"_blank\">\n            <img
+        src=\"/img/kraken.svg?v=-1HiBbDEkG_-e5cWYuyt7qz0IlEP6-6LhCdKms9cBUA\" alt=\"Sponsor
+        Kraken\" height=\"75\" />\n        </a>\n        <div class=\"figure-caption
+        text-center\">\n            <a href=\"https://kraken.com\" class=\"text-muted
+        small\" target=\"_blank\">Kraken</a>\n        </div>\n    </div>\n    <div
+        class=\"figure p-3\">\n        <a href=\"https://twitter.com/sqcrypto\" target=\"_blank\">\n
+        \           <img src=\"/img/squarecrypto.svg?v=l9UXRUhbHPS84ZGuoYCLF1-_HtuCzO9ImDRRQtYNgCA\"
+        alt=\"Sponsor Square Crypto\" height=\"75\" />\n        </a>\n        <div
+        class=\"figure-caption text-center\">\n            <a href=\"https://twitter.com/sqcrypto\"
+        class=\"text-muted small\" target=\"_blank\">Square Crypto</a>\n        </div>\n
+        \   </div>\n    <div class=\"figure p-3\">\n        <a href=\"https://www.btse.com\"
+        target=\"_blank\">\n            <img src=\"/img/btse.svg?v=z0-5Kw9SwxgkJoNUdkz8Lqr5JMu823vJT6f9n1FIkQ0\"
+        alt=\"Sponsor BTSE\" height=\"75\" />\n        </a>\n        <div class=\"figure-caption
+        text-center\">\n            <a href=\"https://www.btse.com/\" class=\"text-muted
+        small\" target=\"_blank\">BTSE</a>\n        </div>\n    </div>\n    <div class=\"figure
+        p-3\">\n        <a href=\"https://www.dglab.com/en/\" target=\"_blank\">\n
+        \           <img src=\"/img/dglab.svg?v=nOfIrlS6w7sXe-itwveN5zwcG_mvBL6Y5Itt3PVmZMw\"
+        alt=\"Sponsor DG lab\" height=\"75\" />\n        </a>\n        <div class=\"figure-caption
+        text-center\">\n            <a href=\"https://www.dglab.com/en/\" class=\"text-muted
+        small\" target=\"_blank\">DG Lab</a>\n        </div>\n    </div>\n    <div
+        class=\"figure p-3\">\n        <a href=\"https://www.okcoin.com/\" target=\"_blank\">\n
+        \           <img src=\"/img/okcoin.svg?v=1UIKVP3kI8eGaCV2tsyqcECxws3cgSwn7WyY133PEUE\"
+        alt=\"Sponsor OKCoin\" height=\"75\" />\n        </a>\n        <div class=\"figure-caption
+        text-center\">\n            <a href=\"https://www.okcoin.com/\" class=\"text-muted
+        small\" target=\"_blank\">OKCoin</a>\n        </div>\n    </div>\n    <div
+        class=\"figure p-3\">\n        <a href=\"https://acinq.co/\" target=\"_blank\">\n
+        \           <img src=\"/img/acinq-logo.svg?v=YQOiNW_A5zTBMgtNYkh7KX0Gb07pqlzImUtBIysMDg8\"
+        alt=\"Sponsor ACINQ\" height=\"75\" />\n        </a>\n        <div class=\"figure-caption
+        text-center\">\n            <a href=\"https://acinq.co/\" class=\"text-muted
+        small\" target=\"_blank\">ACINQ</a>\n        </div>\n    </div>\n</div>\n<div
+        class=\"row justify-content-center\">\n    <a href=\"https://foundation.btcpayserver.org\"
+        target=\"_blank\" class=\"btn btn-link text-center col-12\">View all supporters</a>\n</div>\n\n
+        \               </div>\n                <div class=\"col-md-5 order-md-2 order-1\">\n
+        \                   <div class=\"modal-dialog modal-login\">\n    <div class=\"modal-content\">\n
+        \       <div class=\"modal-header\">\n            <h4 class=\"modal-title\">Sign
+        In</h4>\n        </div>\n        <div class=\"modal-body\">\n            <form
+        method=\"post\" action=\"/Account/Login?returnurl=%2Fapi-keys%2Fauthorize%3FapplicationName%3Dfoobar%26permissions%5B%5D%3Dunrestricted%26selectiveStores%3Dfalse%26strict%3Dtrue\">\n
+        \               <fieldset >\n                    \n                    <div
+        class=\"form-group\">\n                        <div class=\"input-group\">\n
+        \                           <div class=\"input-group-prepend\">\n                                <label
+        for=\"Email\" class=\"input-group-text\"><span class=\"input-group-addon fa
+        fa-user\"></span></label>\n                            </div>\n\n                            <input
+        class=\"form-control\" placeholder=\"Email\" required=\"required\" type=\"email\"
+        data-val=\"true\" data-val-email=\"The Email field is not a valid e-mail address.\"
+        data-val-required=\"The Email field is required.\" id=\"Email\" name=\"Email\"
+        value=\"\" />\n                        </div>\n                        <span
+        class=\"text-danger field-validation-valid\" data-valmsg-for=\"Email\" data-valmsg-replace=\"true\"></span>\n
+        \                   </div>\n                    <div class=\"form-group\">\n
+        \                       <div class=\"input-group\">\n                            <div
+        class=\"input-group-prepend\">\n                                <label for=\"Password\"
+        class=\"input-group-text\"><span class=\"input-group-addon fa fa-lock\"></span></label>\n
+        \                           </div>\n                            <input class=\"form-control\"
+        placeholder=\"Password\" required=\"required\" type=\"password\" data-val=\"true\"
+        data-val-required=\"The Password field is required.\" id=\"Password\" name=\"Password\"
+        />\n                        </div>\n                        <span class=\"text-danger
+        field-validation-valid\" data-valmsg-for=\"Password\" data-valmsg-replace=\"true\"></span>\n
+        \                   </div>\n                    <div class=\"form-group\">\n
+        \                       <button type=\"submit\" class=\"btn btn-primary btn-block
+        btn-lg\" id=\"LoginButton\">Sign in</button>\n                    </div>\n
+        \                   <p class=\"hint-text\"><a href=\"/Account/ForgotPassword\">Forgot
+        your password?</a></p>\n                </fieldset>\n            <input name=\"__RequestVerificationToken\"
+        type=\"hidden\" value=\"CfDJ8FnOlqdJk7hFrjBUfYfP5HmE6-HnJIDh88GI1_VgU9WzEm4bWVKPZeYSCp7zyuSHjJ3iopE2_7dFUkbhJgPujr64iT086AcJPdxv0ImuP9n_NHw7REOUvjzlZTYpLXmJ3UexbsKRaGld6dH_3z_iNpQ\"
+        /></form>\n        </div>\n    </div>\n</div>\n\n\n                </div>\n
+        \           </div>\n        </div>\n    </section>\n    \n<script src=\"/bundles/jqueryvalidate-bundle.min.js?v=kQkuPdzJND7ExPNd8ORxjsLGbF4lBMzWvF1V2zsv3gE\"
+        type=\"text/javascript\"></script>\n\n\n</body>\n</html>\n"
+  recorded_at: Fri, 31 Jul 2020 01:33:21 GMT
+recorded_with: VCR 6.0.0

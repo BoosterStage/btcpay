@@ -6,6 +6,7 @@ require 'rest_client'
 
 require_relative './result'
 require_relative './api/base'
+require_relative './helpers/base'
 
 module BtcPay
   module Client
@@ -36,8 +37,8 @@ module BtcPay
       # @param options [Hash]
       # @param headers [Hash]
       # @return [Result]
-      def get(uri, options: {}, headers: {})
-        request(uri, method: :get, options: options, headers: headers)
+      def get(uri, options: {}, headers: {}, **kwargs)
+        request(uri, method: :get, options: options, headers: headers, **kwargs)
       end
 
       # POST request
@@ -66,6 +67,10 @@ module BtcPay
         @api_keys ||= Api::ApiKeys.new(client: self)
       end
 
+      def api_keys_helper
+        @api_keys_helper ||= Helpers::ApiKeys.new(client: self)
+      end
+
       def users
         @users ||= Api::Users.new(client: self)
       end
@@ -86,26 +91,12 @@ module BtcPay
       end
 
       # @yield [Result]
-      def request(uri, method:, payload: nil, options: {}, headers: {})
-        options ||= {}
-        headers ||= {}
-
-        url = URI(config.base_url)
-        url.path = API_PATH + uri
-        url.query = CGI.unescape(options.to_query).presence
-
-        params = {
-          method: method,
-          url: url.to_s,
-          payload: payload.presence,
-          headers: default_headers.merge(headers),
-          open_timeout: open_timeout,
-          timeout: timeout
-        }.compact
+      def request(uri, **kwargs)
+        params = request_builder(uri, **kwargs)
+        return params if kwargs[:skip_request]
 
         response = RestClient::Request.execute(params)
-
-        logger.debug(message: 'GET Request', url: url, options: options, status: response.code)
+        logger.debug(message: 'GET Request', url: params[:url], options: kwargs[:options], status: response.code)
         result = success?(response.code) ? Result.success(response) : Result.failed(response)
 
         logger.warn(error: 'Request Error', code: result.code, body: result.raw) if result.failure?
@@ -116,6 +107,28 @@ module BtcPay
         raise Error.new('Request timeout')
       rescue ::RestClient::Exception => e
         handle_error(e)
+      end
+
+      # @param uri
+      # @option
+      def request_builder(uri, **kwargs)
+        options = kwargs[:options] ||= {}
+        headers = kwargs[:headers] ||= {}
+
+        url = URI(config.base_url)
+        url.path = kwargs[:skip_api_path] ? uri : API_PATH + uri
+        url.query = CGI.unescape(options.to_query).presence
+
+        return url.to_s if kwargs[:skip_request]
+
+        {
+          method: kwargs[:method],
+          url: url.to_s,
+          payload: kwargs[:payload].presence,
+          headers: default_headers.merge(headers),
+          open_timeout: open_timeout,
+          timeout: timeout
+        }.compact
       end
 
       # Handle errors

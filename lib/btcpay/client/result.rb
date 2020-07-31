@@ -64,22 +64,22 @@ module BtcPay
         return if response.blank?
 
         body = MultiJson.load(response)
+        return body.with_indifferent_access if body.respond_to?(:with_indifferent_access)
+        raise NotImplemented.new('Unknown response type') unless body.is_a?(Array)
 
-        case body
-        when Array
-          key = success? ? :data : :errors
-          {
-            key => body.map(&:with_indifferent_access)
-          }
-        else
-          body.with_indifferent_access
-        end
+        key = success? ? :data : :errors
+        {
+          key => body.map(&:with_indifferent_access)
+        }
+      rescue MultiJson::ParseError
+        response
       rescue StandardError => e
-        raise ResponseBodyParseError.new(error: 'JSON parse error', message: e.message, body: body)
+        raise ResponseBodyParseError.new(error: 'JSON parse error', message: e.message, body: response)
       end
 
       def rubify_body
         return if raw.blank?
+        return unless raw.respond_to?(:deep_transform_keys)
 
         raw.deep_transform_keys { |key| key.to_s.underscore }.with_indifferent_access
       end

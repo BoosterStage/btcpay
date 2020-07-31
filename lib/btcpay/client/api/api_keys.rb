@@ -6,6 +6,20 @@ module BtcPay
       class ApiKeys < Base
         PATH = '/api-keys'
 
+        # @see https://docs.btcpayserver.org/API/Greenfield/v1/#tag/Authorization/paths/~1api-keys~1authorize/get
+        def authorize(permissions: [], application_name:, strict: true, selective_stores: false, **opts)
+          opts.merge!(
+            {
+              permissions: Array(permissions),
+              applicationName: application_name,
+              strict: strict,
+              selectiveStores: selective_stores
+            }
+          )
+
+          client.get('/api-keys/authorize', options: opts, include_api_path: false)
+        end
+
         # @see https://docs.btcpayserver.org/API/Greenfield/v1/#tag/API-Keys/paths/~1api~1v1~1api-keys~1current/get
         def current(**opts)
           client.get(path('current'), options: opts)
