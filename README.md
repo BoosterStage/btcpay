@@ -60,10 +60,24 @@ All endpoints are accessed via namespaced Api resource. Example: `client.users.c
 
 #### Users:
 
-1. `#me(**opts)`
-  - alias: `get`, `show`
-1. `#create(payload, **opts)`
+1. `GET #me`
+1. `POST #create(payload)`
 
+#### Api Keys:
+
+1. `GET #current`
+1. `POST #create(payload)`
+1. `DELETE #revoke(key)`
+1. `DELETE #revoke!`
+
+### Request helpers
+
+#### Api Keys:
+
+##### Authorize
+
+1. `GET #html(permissions: [], application_name:, strict: true, selective_stores: false)`
+1. `#link(permissions: [], application_name:, strict: true, selective_stores: false)`
 
 ### Environment Variables
 
