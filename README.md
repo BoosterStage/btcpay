@@ -70,6 +70,10 @@ All endpoints are accessed via namespaced Api resource. Example: `client.users.c
 1. `DELETE #revoke(key)`
 1. `DELETE #revoke!`
 
+#### Api Keys:
+
+1. `GET #status`
+
 ### Request helpers
 
 #### Api Keys:

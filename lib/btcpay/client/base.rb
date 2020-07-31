@@ -71,6 +71,10 @@ module BtcPay
         @api_keys_helper ||= Helpers::ApiKeys.new(client: self)
       end
 
+      def health
+        @health ||= Api::Health.new(client: self)
+      end
+
       def users
         @users ||= Api::Users.new(client: self)
       end

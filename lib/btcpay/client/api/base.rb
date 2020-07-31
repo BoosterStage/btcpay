@@ -7,6 +7,7 @@ module BtcPay
     module Api
       class Base < Client::Service
         require_relative './api_keys'
+        require_relative './health'
         require_relative './users'
       end
     end
