@@ -7,6 +7,10 @@ RSpec.describe BtcPay::Client::Base do
   let(:subject) { described_class.new(config: config) }
 
   describe 'resources' do
+    it { expect(subject.api_keys).to be_a(BtcPay::Client::Api::ApiKeys) }
+    it { expect(subject.api_keys_helper).to be_a(BtcPay::Client::Helpers::ApiKeys) }
+    it { expect(subject.health).to be_a(BtcPay::Client::Api::Health) }
+    it { expect(subject.lightning.node).to be_a(BtcPay::Client::Api::LightningNode) }
     it { expect(subject.users).to be_a(BtcPay::Client::Api::Users) }
   end
 

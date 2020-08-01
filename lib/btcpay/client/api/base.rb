@@ -8,6 +8,7 @@ module BtcPay
       class Base < Client::Service
         require_relative './api_keys'
         require_relative './health'
+        require_relative './lightning_node'
         require_relative './users'
       end
     end

@@ -10,9 +10,7 @@ module BtcPay
 
         protected
 
-        def base_path
-          nil
-        end
+        def base_path; end
 
         class Authorize
           PATH = '/api-keys/authorize'

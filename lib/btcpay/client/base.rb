@@ -75,6 +75,10 @@ module BtcPay
         @health ||= Api::Health.new(client: self)
       end
 
+      def lightning
+        @lightning ||= OpenStruct.new(node: Api::LightningNode.new(client: self))
+      end
+
       def users
         @users ||= Api::Users.new(client: self)
       end
