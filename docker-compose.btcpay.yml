@@ -57,6 +57,10 @@ services:
     ports:
       - "49392:49392"
     environment:
+      # https://github.com/btcpayserver/btcpayserver-docker/blob/master/Production-NoReverseProxy/README.md
+      # BTCPAY_PROTOCOL: http
+      # BTCPAY_HOST: localhost
+      # BTCPAYGEN_REVERSEPROXY: none
       BTCPAY_BIND: 0.0.0.0:49392
       BTCPAY_POSTGRES: User ID=user;Password=password;Host=btcpay_db;Port=5432;Database=btcpay_regtest
       BTCPAY_NETWORK: regtest
@@ -64,6 +68,9 @@ services:
       BTCPAY_ROOTPATH: /
       BTCPAY_BTCEXPLORERURL: http://nbxplorer:32838/
       BTCPAY_DEBUGLOG: btcpay.log
+      # https://docs.btcpayserver.org/LightningNetwork/#choosing-the-lightning-network-implementation
+      # BTCPAYGEN_LIGHTNING: clightning
+      # BTCPAYGEN_LIGHTNING: lnd
     volumes:
      - "btcpay_data:/datadir"
      - "nbxplorer_data:/root/.nbxplorer"
@@ -71,6 +78,46 @@ services:
       - btcpay_db
       - bitcoind
       - nbxplorer
+      # - lightning
+      # - lnd
+
+  # lnd:
+  #   image: lightningnetwork/lnd-alpine
+  #   container_name: lnd
+  #   environment:
+  #     RPCHOST: bitcoind
+  #     RPCUSER: rpcuser
+  #     RPCPASS: rpcpassword
+  #     DEBUG: debug
+  #     NETWORK: regtest
+  #   volumes:
+  #     - bitcoind_data:/rpc
+  #     - lnd_data:/root/.lnd
+  #   links:
+  #     - bitcoind
+
+  # lightningd:
+  #   image: elementsproject/lightningd
+  #   container_name: lightningd
+  #   command:
+  #     - --bitcoin-rpcconnect=bitcoind
+  #     - --bitcoin-rpcuser=rpcuser
+  #     - --bitcoin-rpcpassword=rpcpassword
+  #     - --bitcoin-rpcport=43782
+  #     - --network=regtest
+  #     - --alias=lightningdnode
+  #     - --log-level=debug
+  #   environment:
+  #     EXPOSE_TCP: "true"
+  #   expose:
+  #     - "9735"
+  #   ports:
+  #     - "0.0.0.0:9735:9735"
+  #   volumes:
+  #     - "lightningd_data:/root/.lightning"
+  #     - "bitcoind_data:/etc/bitcoin"
+  #   links:
+  #     - bitcoind
 
   btcpay_db:
     container_name: btcpay_db
@@ -79,15 +126,18 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
+      POSTGRES_MULTIPLE_DATABASES: blocklux_development,btcpay_regtest
     ports:
-      - "5432:5432"
+      - "54321:5432"
     volumes:
       - /usr/local/var/postgres/data:/var/lib/postgresql/data
       - /usr/local/var/postgres/docker/multi-db-entrypoint:/docker-entrypoint-initdb.d
 
 volumes:
   bitcoind_data:
-  nbxplorer_data:
   btcpay_data:
+  # lightningd_data:
+  # lnd_data:
+  nbxplorer_data:
 
 networks: {}

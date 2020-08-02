@@ -2,12 +2,10 @@
 
 require 'spec_helper'
 
-RSpec.describe BtcPay::Client::Api::LightningNode, :vcr do
+RSpec.describe BtcPay::Client::Api::LightningNode, :vcr, skip: 'TODO: Set up local lightning network' do
   let(:crypto_code) { 'TODO' }
   let(:client) { build(:client) }
   subject { described_class.new(client: client) }
-
-  before { pending('need to set up lightning network') }
 
   describe 'GET #info' do
     let(:response) { subject.info(crypto_code) }
