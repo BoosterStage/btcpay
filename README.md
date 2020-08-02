@@ -1,8 +1,8 @@
 # Btcpay Server
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/btcpay`. To experiment with that code, run `bin/console` for an interactive prompt.
+[BTCPay Server Api Client](https://btcpayserver.org/)
 
-TODO: Delete this and the text above, and describe your gem
+[BTCPay Server is a free and open-source cryptocurrency payment processor which allows you to receive payments in Bitcoin and altcoins directly, with no fees, transaction cost or a middleman.](https://docs.btcpayserver.org/API/Greenfield/v1/)
 
 ## Installation
 
@@ -58,11 +58,6 @@ A response consists of the following accessible attributes:
 
 All endpoints are accessed via namespaced Api resource. Example: `client.users.create({ email: 'foo@bar.com', password: 'password', isAdministrator: false })`
 
-#### Users:
-
-1. `GET #me`
-1. `POST #create(payload)`
-
 #### Api Keys:
 
 1. `GET #current`
@@ -70,9 +65,18 @@ All endpoints are accessed via namespaced Api resource. Example: `client.users.c
 1. `DELETE #revoke(key)`
 1. `DELETE #revoke!`
 
-#### Api Keys:
+#### Health:
 
 1. `GET #status`
+
+#### Lightning:
+
+1. TODO - Set up local lightning network
+
+#### Users:
+
+1. `GET #me`
+1. `POST #create(payload)`
 
 ### Request helpers
 

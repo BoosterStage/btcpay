@@ -57,10 +57,6 @@ services:
     ports:
       - "49392:49392"
     environment:
-      # https://github.com/btcpayserver/btcpayserver-docker/blob/master/Production-NoReverseProxy/README.md
-      # BTCPAY_PROTOCOL: http
-      # BTCPAY_HOST: localhost
-      # BTCPAYGEN_REVERSEPROXY: none
       BTCPAY_BIND: 0.0.0.0:49392
       BTCPAY_POSTGRES: User ID=user;Password=password;Host=btcpay_db;Port=5432;Database=btcpay_regtest
       BTCPAY_NETWORK: regtest
@@ -78,7 +74,7 @@ services:
       - btcpay_db
       - bitcoind
       - nbxplorer
-      # - lightning
+      # - lightningd
       # - lnd
 
   # lnd:
