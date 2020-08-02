@@ -8,9 +8,7 @@ module BtcPay
           Authorize.new(client: client)
         end
 
-        protected
-
-        def base_path; end
+        def set_base_path; end
 
         class Authorize
           PATH = '/api-keys/authorize'

@@ -71,18 +71,28 @@ All endpoints are accessed via namespaced Api resource. Example: `client.users.c
 
 #### Lightning:
 
-1. TODO - Set up local lightning network
+1. TODO - Set up local lightning network, testing, etc.
+
+#### Store:
+
+- ##### Payment Requests:
+
+1. `GET #all(store_id)`
+1. `POST #create(payload)`
+1. `GET #get(store_id, request_id)`
+1. `DELETE #delete(store_id, request_id)`
+1. `PUT #update(store_id, request_id, payload)`
 
 #### Users:
 
 1. `GET #me`
 1. `POST #create(payload)`
 
-### Request helpers
+## Request helpers
 
 #### Api Keys:
 
-##### Authorize
+- ##### Authorize
 
 1. `GET #html(permissions: [], application_name:, strict: true, selective_stores: false)`
 1. `#link(permissions: [], application_name:, strict: true, selective_stores: false)`

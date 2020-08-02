@@ -35,8 +35,8 @@ module BtcPay
 
         protected
 
-        def base_path
-          PATH
+        def set_base_path
+          @base_path = PATH
         end
       end
     end

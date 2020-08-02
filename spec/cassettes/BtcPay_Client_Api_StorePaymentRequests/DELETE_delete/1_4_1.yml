@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: http://localhost:49392/api/v1/stores/EiGimqCJGwRGkCL8DbdeArVApkvHZdaZARofiSApKdpQ/payment-requests/007b9ad8-49f1-4b99-942b-3917ceb20eef
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - btcpay_ruby/0.1.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - deflate, gzip
+      Authorization:
+      - token 9133b8ef3ae9a4b7f2d9a6efef1d5cf738067c68
+      Host:
+      - localhost:49392
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 02 Aug 2020 22:34:17 GMT
+      Server:
+      - Kestrel
+      Content-Length:
+      - '0'
+      Referrer-Policy:
+      - same-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Sun, 02 Aug 2020 22:34:18 GMT
+recorded_with: VCR 6.0.0

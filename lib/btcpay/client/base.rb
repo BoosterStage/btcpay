@@ -53,6 +53,18 @@ module BtcPay
         request(uri, method: :post, payload: data, options: options, headers: headers)
       end
 
+      # PUT request
+      #
+      # @param uri [String]
+      # @param payload [Hash]
+      # @param options [Hash]
+      # @param headers [Hash]
+      # @return [Result]
+      def put(uri, payload:, options: {}, headers: {})
+        data = payload.is_a?(Hash) ? payload.to_json : payload
+        request(uri, method: :put, payload: data, options: options, headers: headers)
+      end
+
       # DELETE request
       #
       # @param uri [String]
@@ -77,6 +89,12 @@ module BtcPay
 
       def lightning
         @lightning ||= OpenStruct.new(node: Api::LightningNode.new(client: self))
+      end
+
+      def store
+        @store ||= OpenStruct.new(
+          payment_requests: Api::StorePaymentRequests.new(client: self)
+        )
       end
 
       def users
