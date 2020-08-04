@@ -12,7 +12,6 @@ module BtcPay
         end
 
         alias get me
-        alias show me
 
         # @see https://docs.btcpayserver.org/API/Greenfield/v1/#tag/Users/paths/~1api~1v1~1users/post
         def create(payload, **opts)

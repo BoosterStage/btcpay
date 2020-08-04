@@ -73,6 +73,12 @@ All endpoints are accessed via namespaced Api resource. Example: `client.users.c
 
 1. TODO - Set up local lightning network, testing, etc.
 
+#### Pull Payments:
+
+1. `GET #get(pull_payment_id)`
+1. `GET #payouts`
+1. `POST #create_payout(pull_payment_id, payload)`
+
 #### Store:
 
 - ##### Payment Requests:
@@ -82,6 +88,11 @@ All endpoints are accessed via namespaced Api resource. Example: `client.users.c
 1. `GET #get(store_id, request_id)`
 1. `DELETE #delete(store_id, request_id)`
 1. `PUT #update(store_id, request_id, payload)`
+
+- ##### Payouts:
+
+1. `POST #approve(store_id, payout_id, payload)`
+1. `DELETE #delete(store_id, payout_id)`
 
 - ##### Pull Payments:
 

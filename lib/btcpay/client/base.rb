@@ -48,7 +48,7 @@ module BtcPay
       # @param options [Hash]
       # @param headers [Hash]
       # @return [Result]
-      def post(uri, payload:, options: {}, headers: {})
+      def post(uri, payload: {}, options: {}, headers: {})
         data = payload.is_a?(Hash) ? payload.to_json : payload
         request(uri, method: :post, payload: data, options: options, headers: headers)
       end
@@ -91,9 +91,16 @@ module BtcPay
         @lightning ||= OpenStruct.new(node: Api::LightningNode.new(client: self))
       end
 
+      def pull_payments
+        @pull_payments ||= Api::PullPayments.new(client: self)
+      end
+
+      alias payments pull_payments
+
       def store
         @store ||= OpenStruct.new(
           payment_requests: Api::StorePaymentRequests.new(client: self),
+          payouts: Api::StorePayouts.new(client: self),
           pull_payments: Api::StorePullPayments.new(client: self)
         )
       end
