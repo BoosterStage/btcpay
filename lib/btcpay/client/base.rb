@@ -97,6 +97,10 @@ module BtcPay
 
       alias payments pull_payments
 
+      def server
+        @server ||= Api::Server.new(client: self)
+      end
+
       def store
         @store ||= OpenStruct.new(
           payment_requests: Api::StorePaymentRequests.new(client: self),

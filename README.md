@@ -29,10 +29,15 @@ Or install it yourself as:
 At least one of the following auth tokens are required. Auth tokens can be created via the following:
 
 1. `auth_token`
+
   - Scoped Api Tokens can be created via `/Manage/APIKeys`
+
   - `BTCPAY_AUTH_TOKEN` environment variable can also be used
+
 1. `basic_auth_token`
+
   - Legacy Api Key can be created per store via `/stores/{store-id}/Tokens`
+
   - `BTCPAY_BASIC_AUTH_TOKEN` environment variable can also be used
 
 ##### Base Url
@@ -78,6 +83,10 @@ All endpoints are accessed via namespaced Api resource. Example: `client.users.c
 1. `GET #get(pull_payment_id)`
 1. `GET #payouts`
 1. `POST #create_payout(pull_payment_id, payload)`
+
+#### Server:
+
+1. `GET #info`
 
 #### Store:
 
