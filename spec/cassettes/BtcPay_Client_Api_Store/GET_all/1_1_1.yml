@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:49392/api/v1/stores
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - btcpay_ruby/0.1.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - deflate, gzip
+      Authorization:
+      - token 9133b8ef3ae9a4b7f2d9a6efef1d5cf738067c68
+      Host:
+      - localhost:49392
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 05 Aug 2020 00:34:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Kestrel
+      Content-Length:
+      - '1187'
+      Referrer-Policy:
+      - same-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '[{"id":"GL1rwX9rxFMYJR26Yxa1pDpzPaSvmk78CQ4khrr64z93","name":"blocklux","website":null,"invoiceExpiration":900,"monitoringExpiration":86400,"speedPolicy":"MediumSpeed","lightningDescriptionTemplate":"Paid
+        to {StoreName} (Order ID: {OrderId})","paymentTolerance":0.0,"anyoneCanCreateInvoice":false,"showRecommendedFee":true,"recommendedFeeBlockTarget":1,"lightningAmountInSatoshi":false,"customLogo":null,"customCSS":null,"htmlTitle":null,"redirectAutomatically":false,"requiresRefundEmail":false,"networkFeeMode":"MultiplePaymentsOnly","payJoinEnabled":false,"lightningPrivateRouteHints":false},{"id":"EiGimqCJGwRGkCL8DbdeArVApkvHZdaZARofiSApKdpQ","name":"foobar","website":null,"invoiceExpiration":900,"monitoringExpiration":86400,"speedPolicy":"MediumSpeed","lightningDescriptionTemplate":"Paid
+        to {StoreName} (Order ID: {OrderId})","paymentTolerance":0.0,"anyoneCanCreateInvoice":false,"showRecommendedFee":true,"recommendedFeeBlockTarget":1,"lightningAmountInSatoshi":false,"customLogo":null,"customCSS":null,"htmlTitle":null,"redirectAutomatically":false,"requiresRefundEmail":false,"networkFeeMode":"MultiplePaymentsOnly","payJoinEnabled":false,"lightningPrivateRouteHints":false}]'
+  recorded_at: Wed, 05 Aug 2020 00:34:10 GMT
+recorded_with: VCR 6.0.0

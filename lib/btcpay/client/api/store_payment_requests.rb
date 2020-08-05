@@ -23,7 +23,7 @@ module BtcPay
           client.get(store_path(store_id, request_id), options: opts)
         end
 
-        alias find_by get
+        alias find get
 
         # @see https://docs.btcpayserver.org/API/Greenfield/v1/#operation/PaymentRequests_ArchivePaymentRequest
         def delete(store_id, request_id, **opts)

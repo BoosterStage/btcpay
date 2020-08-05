@@ -13,6 +13,7 @@ RSpec.describe BtcPay::Client::Base do
     it { expect(subject.lightning.node).to be_a(BtcPay::Client::Api::LightningNode) }
     it { expect(subject.pull_payments).to be_a(BtcPay::Client::Api::PullPayments) }
     it { expect(subject.server).to be_a(BtcPay::Client::Api::Server) }
+    it { expect(subject.store).to be_a(BtcPay::Client::Api::Store) }
     it { expect(subject.store.payment_requests).to be_a(BtcPay::Client::Api::StorePaymentRequests) }
     it { expect(subject.store.payouts).to be_a(BtcPay::Client::Api::StorePayouts) }
     it { expect(subject.store.pull_payments).to be_a(BtcPay::Client::Api::StorePullPayments) }

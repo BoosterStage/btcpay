@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:49392/api/v1/stores/5wDCC8j1d7jEF8fVh2jJKjHw6eZdzeAZZLhogqf1njMS
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - btcpay_ruby/0.1.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - deflate, gzip
+      Authorization:
+      - token 9133b8ef3ae9a4b7f2d9a6efef1d5cf738067c68
+      Host:
+      - localhost:49392
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 05 Aug 2020 00:48:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Kestrel
+      Content-Length:
+      - '692'
+      Referrer-Policy:
+      - same-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":"5wDCC8j1d7jEF8fVh2jJKjHw6eZdzeAZZLhogqf1njMS","name":"btcpaygem-spec-a8041e9f5c3701a801cffe12fe3a56fb","website":"https://btcpaygem-spec-6db2fa05c09f12cdf0cd91c7011bafae.com","invoiceExpiration":900,"monitoringExpiration":3600,"speedPolicy":"MediumSpeed","lightningDescriptionTemplate":"Paid
+        to {StoreName} (Order ID: {OrderId})","paymentTolerance":0.0,"anyoneCanCreateInvoice":false,"showRecommendedFee":true,"recommendedFeeBlockTarget":1,"defaultLang":"en","lightningAmountInSatoshi":false,"customLogo":null,"customCSS":null,"htmlTitle":null,"redirectAutomatically":false,"requiresRefundEmail":false,"networkFeeMode":"Never","payJoinEnabled":false,"lightningPrivateRouteHints":false}'
+  recorded_at: Wed, 05 Aug 2020 00:48:35 GMT
+recorded_with: VCR 6.0.0

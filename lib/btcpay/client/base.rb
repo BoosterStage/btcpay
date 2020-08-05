@@ -102,11 +102,7 @@ module BtcPay
       end
 
       def store
-        @store ||= OpenStruct.new(
-          payment_requests: Api::StorePaymentRequests.new(client: self),
-          payouts: Api::StorePayouts.new(client: self),
-          pull_payments: Api::StorePullPayments.new(client: self)
-        )
+        @store ||= Api::Store.new(client: self)
       end
 
       def users
