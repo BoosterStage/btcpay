@@ -90,6 +90,12 @@ All endpoints are accessed via namespaced Api resource. Example: `client.users.c
 
 #### Store:
 
+1. `GET #all`
+1. `POST #create(payload)`
+1. `GET #get(store_id)`
+1. `DELETE #delete(store_id)`
+1. `PUT #update(store_id, payload)`
+
 - ##### Payment Requests:
 
 1. `GET #all(store_id)`
