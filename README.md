@@ -2,7 +2,9 @@
 
 [BTCPay Server Api Client](https://btcpayserver.org/)
 
-[BTCPay Server is a free and open-source cryptocurrency payment processor which allows you to receive payments in Bitcoin and altcoins directly, with no fees, transaction cost or a middleman.](https://docs.btcpayserver.org/API/Greenfield/v1/)
+[BTCPay Server is a free and open-source cryptocurrency payment processor which allows you to receive payments in Bitcoin directly, with no fees, transaction cost or a middleman.](https://docs.btcpayserver.org/API/Greenfield/v1/)
+
+Forked from https://gitlab.com/snogrammer/btcpay
 
 ## Installation
 
